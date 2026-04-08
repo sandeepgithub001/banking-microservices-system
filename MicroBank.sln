@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.12345.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBank.CustomerService", "src\MicroBank.CustomerService\MicroBank.CustomerService.csproj", "{B1A4E97C-56AF-4A05-B92E-8A6DD934B5A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBank.AccountService", "src\MicroBank.AccountService\MicroBank.AccountService.csproj", "{E4C3F37F-23D1-4B4A-9D4F-9F41A1A2D8B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBank.ApiGateway", "src\MicroBank.ApiGateway\MicroBank.ApiGateway.csproj", "{79C5A266-4CF4-4D1F-8DFC-BB7B33F3CDE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBank.ServiceRegistry", "src\MicroBank.ServiceRegistry\MicroBank.ServiceRegistry.csproj", "{3D2A4E10-1E9F-4C8F-8C98-56FBC3708964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBank.ConfigService", "src\MicroBank.ConfigService\MicroBank.ConfigService.csproj", "{8F292CAD-DE3E-4284-8CDE-7839B5E1F64A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1A4E97C-56AF-4A05-B92E-8A6DD934B5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A4E97C-56AF-4A05-B92E-8A6DD934B5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C3F37F-23D1-4B4A-9D4F-9F41A1A2D8B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C3F37F-23D1-4B4A-9D4F-9D4F-9F41A1A2D8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C5A266-4CF4-4D1F-8DFC-BB7B33F3CDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C5A266-4CF4-4D1F-8DFC-BB7B33F3CDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2A4E10-1E9F-4C8F-8C98-56FBC3708964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2A4E10-1E9F-4C8F-8C98-56FBC3708964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F292CAD-DE3E-4284-8CDE-7839B5E1F64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F292CAD-DE3E-4284-8CDE-7839B5E1F64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <section>
+    <h2>Create Customer</h2>
+    <form (ngSubmit)="createCustomer()">
+      <label>First name</label>
+      <input [(ngModel)]="newCustomer.firstName" name="firstName" required />
+
+      <label>Last name</label>
+      <input [(ngModel)]="newCustomer.lastName" name="lastName" required />
+
+      <label>Email</label>
+      <input [(ngModel)]="newCustomer.email" name="email" required />
+
+      <label>Phone</label>
+      <input [(ngModel)]="newCustomer.phone" name="phone" required />
+
+      <button type="submit">Create</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Customers</h2>
+    <ul>
+      <li *ngFor="let customer of customers">
+        {{ customer.firstName }} {{ customer.lastName }} — {{ customer.email }}
+      </li>
+    </ul>
+  </section>
+</div>

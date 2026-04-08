@@ -1,0 +1,27 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/customers/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "MicroBank.CustomerService",
+      "UpstreamPathTemplate": "/customers/{everything}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"]
+    },
+    {
+      "DownstreamPathTemplate": "/api/accounts/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "MicroBank.AccountService",
+      "UpstreamPathTemplate": "/accounts/{everything}",
+      "UpstreamHttpMethod": ["GET", "POST", "DELETE"]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "BaseUrl": "http://localhost:7000",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
