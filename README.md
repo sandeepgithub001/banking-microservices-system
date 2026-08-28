@@ -23,13 +23,53 @@ MicroBank is a microservices-based banking application built using Angular, ASP.
 
 ## Running MicroBank
 
-1. Start Consul locally on `http://localhost:8500`.
-2. Start `MicroBank.ConfigService`.
-3. Start `MicroBank.ServiceRegistry`.
-4. Start `MicroBank.CustomerService` on port `6000`.
-5. Start `MicroBank.AccountService` on port `6001`.
-6. Start `MicroBank.ApiGateway` on port `7000`.
-7. Start the Angular frontend after installing npm dependencies.
+### Quick Start (PowerShell scripts)
+
+Run both backend and frontend together:
+
+```powershell
+# Terminal 1 - starts all 5 backend services (each in its own window)
+.\start-backend.ps1
+
+# Terminal 2 - starts the Angular frontend (installs npm deps if needed)
+.\start-frontend.ps1
+```
+
+Then open **http://localhost:4200** in your browser.
+
+To stop everything:
+
+```powershell
+.\stop-all.ps1
+```
+
+### Manual Start (per service)
+
+1. Start `MicroBank.ServiceRegistry` on port `8500` (acts as Consul; start first so others can register).
+2. Start `MicroBank.ConfigService` on port `5000`.
+3. Start `MicroBank.CustomerService` on port `6000`.
+4. Start `MicroBank.AccountService` on port `6001`.
+5. Start `MicroBank.ApiGateway` on port `7000` (frontend talks to this).
+6. Start the Angular frontend:
+
+```powershell
+cd frontend
+npm install   # first time only
+npm start     # serves at http://localhost:4200
+```
+
+Each service's port is configured in its `Properties/launchSettings.json`, so plain `dotnet run` binds the correct port automatically.
+
+### Service Ports
+
+| Service | Port | Purpose |
+|---|---|---|
+| ServiceRegistry | 8500 | Consul-compatible service discovery |
+| ConfigService | 5000 | Centralized configuration |
+| CustomerService | 6000 | Customer CRUD |
+| AccountService | 6001 | Accounts, deposits, withdrawals |
+| ApiGateway | 7000 | Ocelot gateway (frontend entry point) |
+| Angular frontend | 4200 | UI (calls gateway at 7000) |
 
 ## Sample API Requests
 

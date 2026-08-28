@@ -15,26 +15,38 @@ public class AccountsController : ControllerBase
         _accountService = accountService;
     }
 
-    [HttpPost("deposit")]
-    public async Task<IActionResult> Deposit([FromBody] TransactionRequest request)
+    [HttpGet("customer/{customerId}")]
+    public async Task<IActionResult> GetByCustomer(Guid customerId)
     {
-        await _accountService.DepositAsync(request.AccountId, request.Amount);
-        var account = await _accountService.GetByIdAsync(request.AccountId);
-        return Ok(account);
-    }
-
-    [HttpPost("withdraw")]
-    public async Task<IActionResult> Withdraw([FromBody] TransactionRequest request)
-    {
-        await _accountService.WithdrawAsync(request.AccountId, request.Amount);
-        var account = await _accountService.GetByIdAsync(request.AccountId);
-        return Ok(account);
+        var accounts = await _accountService.GetByCustomerIdAsync(customerId);
+        var accountsWithCustomer = new List<AccountWithCustomer>();
+        foreach (var account in accounts)
+        {
+            accountsWithCustomer.Add(await _accountService.GetByIdWithCustomerAsync(account.Id));
+        }
+        return Ok(accountsWithCustomer);
     }
 
     [HttpGet("{accountId}")]
     public async Task<IActionResult> Get(Guid accountId)
     {
-        var account = await _accountService.GetByIdAsync(accountId);
+        var account = await _accountService.GetByIdWithCustomerAsync(accountId);
+        return Ok(account);
+    }
+
+    [HttpPost("deposit")]
+    public async Task<IActionResult> Deposit([FromBody] DepositWithdrawRequest request)
+    {
+        await _accountService.DepositAsync(request.AccountId, request.Amount, request.CustomerId, request.FirstName, request.LastName, request.Email);
+        var account = await _accountService.GetByIdWithCustomerAsync(request.AccountId);
+        return Ok(account);
+    }
+
+    [HttpPost("withdraw")]
+    public async Task<IActionResult> Withdraw([FromBody] DepositWithdrawRequest request)
+    {
+        await _accountService.WithdrawAsync(request.AccountId, request.Amount, request.CustomerId, request.FirstName, request.LastName, request.Email);
+        var account = await _accountService.GetByIdWithCustomerAsync(request.AccountId);
         return Ok(account);
     }
 
@@ -53,4 +65,4 @@ public class AccountsController : ControllerBase
     }
 }
 
-public record TransactionRequest(Guid AccountId, decimal Amount);
+public record DepositWithdrawRequest(Guid AccountId, decimal Amount, Guid CustomerId, string FirstName, string LastName, string Email);

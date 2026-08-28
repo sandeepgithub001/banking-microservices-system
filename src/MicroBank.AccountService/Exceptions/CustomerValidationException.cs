@@ -6,4 +6,9 @@ public class CustomerValidationException : Exception
         : base($"Customer validation failed for customer id '{customerId}'.")
     {
     }
+
+    public CustomerValidationException(string message)
+        : base(message)
+    {
+    }
 }

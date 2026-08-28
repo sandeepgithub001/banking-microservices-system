@@ -1,0 +1,12 @@
+/* MicroBank global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #212121;
+  background-color: #fafafa;
+}

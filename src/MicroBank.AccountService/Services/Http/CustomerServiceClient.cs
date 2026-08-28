@@ -27,4 +27,14 @@ public class CustomerServiceClient : ICustomerServiceClient
             throw new Exception($"Customer validation call failed: {response.StatusCode} {content}");
         }
     }
+
+    public async Task<CustomerDto?> GetCustomerAsync(Guid customerId)
+    {
+        var response = await _httpClient.GetAsync($"/api/customers/{customerId}");
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.Content.ReadFromJsonAsync<CustomerDto>();
+        }
+        return null;
+    }
 }
